@@ -1,0 +1,25 @@
+/* Specific styles for CompanyModal */
+
+.company-modal-phone-group {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 8px;
+}
+
+.company-modal-phone-prefix {
+  text-align: center;
+  padding: 12px 8px;
+  color: var(--brand-accent);
+  font-weight: 700;
+}
+
+.company-modal-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  font-weight: 500;
+}

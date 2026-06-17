@@ -1,0 +1,99 @@
+.stats-card {
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  padding: 20px;
+  margin: 0;
+  border-radius: 16px;
+  color: var(--text-white, #f9fafb);
+  background: #0b121a; /* Mismo fondo que tablas y gráfico */
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25); /* Misma sombra */
+  border: 1px solid rgba(255, 255, 255, 0.04); /* Mismo borde */
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stats-card:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+  background-color: #0e151e; /* Muy ligero aclarado */
+}
+
+.stats-card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.stats-card-label {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+  margin-bottom: 6px;
+}
+
+.stats-card-value {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.stats-card-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.stats-card-icon {
+  opacity: 0.9;
+}
+
+/* Colores para Iconos (mantenemos los fondos tintados solo para los iconos) */
+.stats-card-blue {
+  border-bottom: 3px solid #3b82f6;
+}
+.stats-card-blue .stats-card-icon-wrapper {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.15);
+}
+
+.stats-card-green {
+  border-bottom: 3px solid #10b981;
+}
+.stats-card-green .stats-card-icon-wrapper {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.15);
+}
+
+.stats-card-purple {
+  border-bottom: 3px solid #8b5cf6;
+}
+.stats-card-purple .stats-card-icon-wrapper {
+  background: rgba(139, 92, 246, 0.15);
+  color: #a78bfa;
+  border: 1px solid rgba(139, 92, 246, 0.15);
+}
+
+.stats-card-orange {
+  border-bottom: 3px solid #f59e0b;
+}
+.stats-card-orange .stats-card-icon-wrapper {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.15);
+}

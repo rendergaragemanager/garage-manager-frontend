@@ -1,0 +1,91 @@
+.companies-page {
+  width: 100%;
+}
+
+.companies-datalist {
+  width: 100%;
+}
+
+.companies-loading,
+.companies-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  gap: 16px;
+}
+
+.companies-error {
+  flex-direction: column;
+  gap: 12px;
+  color: var(--color-text-danger);
+}
+
+.companies-error-title {
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.companies-error-message {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+/* Avatares / info principal */
+.company-main-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.company-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(249, 115, 22, 0.15);
+  color: #f97316;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.company-name-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.company-name-wrapper .name-text {
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--color-text-primary);
+}
+
+/* Badges */
+.companies-dl-badge--active {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.companies-dl-badge--inactive {
+  background: rgba(239, 68, 68, 0.12);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.companies-dl-badge--mechanic {
+  background: rgba(96, 165, 250, 0.15);
+  color: #60a5fa;
+  border: 1px solid rgba(96, 165, 250, 0.3);
+}
+
+.companies-dl-badge--administrative {
+  background: rgba(250, 204, 21, 0.12);
+  color: #facc15;
+  border: 1px solid rgba(250, 204, 21, 0.3);
+}

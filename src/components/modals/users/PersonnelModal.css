@@ -1,0 +1,63 @@
+.personnel-modal-stats {
+  padding: 24px 32px;
+  background: rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.personnel-modal-list .dl-wrapper {
+  border: none;
+  background: transparent;
+}
+
+.personnel-modal-list .dl-header {
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid var(--border-dark);
+  padding: 16px 32px;
+}
+
+.personnel-modal-list .dl-header-cell {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+}
+
+.personnel-modal-list .dl-row {
+  padding: 24px 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  transition: background-color 0.2s ease;
+  align-items: center;
+}
+
+.personnel-modal-list .dl-row:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.personnel-modal-list .dl-row:last-child {
+  border-bottom: none;
+}
+
+.personnel-modal-list .name-text {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.personnel-modal-list .user-avatar {
+  width: 44px;
+  height: 44px;
+  font-size: 18px;
+}
+
+.personnel-modal-list .dl-cell-value {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 640px) {
+  .personnel-modal-stats {
+    padding: 16px;
+  }
+
+  .personnel-modal-list .dl-row {
+    padding: 16px;
+  }
+}

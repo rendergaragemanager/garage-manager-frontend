@@ -1,0 +1,98 @@
+.searchbar {
+  position: relative;
+  width: 100%;
+}
+
+.searchbar--list-header {
+  min-width: 0;
+}
+
+.searchbar-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-white);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.searchbar-input {
+  width: 100%;
+  padding: 10px 38px 10px 42px;
+  font-size: 14px;
+  border: 1px solid var(--border-dark);
+  border-radius: 10px;
+  background-color: #1a212b;
+  color: var(--text-white);
+  transition: all 0.2s;
+}
+
+/* Hide native search clear button */
+.searchbar-input::-webkit-search-decoration,
+.searchbar-input::-webkit-search-cancel-button,
+.searchbar-input::-webkit-search-results-button,
+.searchbar-input::-webkit-search-results-decoration {
+  display: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.searchbar-input:focus {
+  outline: none;
+  border-color: var(--brand-accent);
+  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.15);
+}
+
+.searchbar-clear {
+  position: absolute;
+  right: 9px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.2);
+  color: #cbd5e1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.searchbar-clear:hover {
+  background: rgba(148, 163, 184, 0.32);
+  color: #f8fafc;
+}
+
+.searchbar-clear:focus-visible {
+  outline: 2px solid var(--brand-accent);
+  outline-offset: 1px;
+}
+
+@media (max-width: 768px) {
+  .searchbar-icon {
+    left: 12px;
+  }
+
+  .searchbar-input {
+    min-height: 42px;
+    font-size: 14px;
+    padding: 10px 40px 10px 38px;
+  }
+}
+
+@media (max-width: 480px) {
+  .searchbar-input {
+    min-height: 44px;
+    border-radius: 12px;
+  }
+
+  .searchbar-clear {
+    width: 24px;
+    height: 24px;
+    right: 8px;
+  }
+}

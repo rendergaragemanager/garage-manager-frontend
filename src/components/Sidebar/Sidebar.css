@@ -1,0 +1,195 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: var(--nav-width);
+  background-color: var(--bg-dark);
+  color: var(--text-white);
+  /*  border-right: 1px solid var(--border-dark); */
+  transition: width var(--transition-standard);
+  /* box-shadow: 4px 0 6px -1px rgba(0, 0, 0, 0.3); */
+  position: sticky;
+  top: 72px;
+  max-height: calc(100dvh - 72px);
+  z-index: 40;
+}
+
+.sidebar.collapsed {
+  width: var(--nav-width-collapsed);
+}
+
+.sidebar-header {
+  height: 60px;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.toggle-btn {
+  color: var(--text-white);
+  opacity: 0.6;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.toggle-btn:hover {
+  opacity: 1;
+  color: var(--text-white);
+  scale: 1.1;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 24px 16px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.sidebar-nav::-webkit-scrollbar {
+  width: 4px;
+}
+.sidebar-nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background-color: #4b5563;
+  border-radius: 10px;
+}
+.sidebar-nav::-webkit-scrollbar-thumb:hover {
+  background-color: #6b7280;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-list > li:hover {
+  background: none;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-white);
+  opacity: 0.6;
+  padding: 12px 16px;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+  text-decoration: none;
+}
+
+.sidebar.collapsed .nav-btn {
+  padding: 12px;
+  justify-content: center;
+}
+
+.nav-btn:hover {
+  opacity: 1;
+  color: var(--text-white);
+}
+
+.nav-btn:hover:not(.active) .nav-icon {
+  scale: 1.1;
+}
+
+.nav-btn.active {
+  opacity: 1;
+  color: var(--text-white);
+}
+
+.nav-icon {
+  min-width: 22px;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.nav-btn.active .nav-icon {
+  scale: 1.1;
+}
+
+.nav-label {
+  white-space: nowrap;
+  font-size: 0.9rem !important;
+}
+
+.active-indicator {
+  display: none;
+  position: absolute;
+  right: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 24px;
+  background-color: var(--brand-accent);
+  box-shadow: 0 0 8px rgba(249, 115, 22, 0.3);
+}
+
+.nav-btn.active .active-indicator {
+  display: block;
+}
+
+/* Permitimos ocultarlo o mostrarlo en distintas resoluciones si fuese necesario (opcional) */
+@media (max-width: 768px) {
+  .toggle-btn {
+    display: flex; /* En móviles siempre viene bien poder contraer el menú si ocupa toda la pantalla */
+  }
+}
+/* BLOQUE 7: Reglas Responsive (Adaptación en Móviles y dispositivos menores a 768px) */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none; /* Ocultamos la barra lateral en móviles por completo */
+  }
+}
+
+/* Ajustes para pantallas con poca altura (Nest Hub, tablets en horizontal, etc.) */
+@media (max-height: 700px) {
+  .sidebar-header {
+    height: 50px;
+    min-height: 50px;
+  }
+
+  .sidebar-nav {
+    padding: 12px 12px;
+  }
+
+  .nav-list {
+    gap: 4px;
+  }
+
+  .nav-btn {
+    padding: 8px 12px;
+    font-size: 1.2rem; /* Reducimos el tamaño base que aporta line-height */
+  }
+
+  .nav-label {
+    font-size: 0.85rem !important;
+  }
+
+  .nav-icon {
+    min-width: 20px;
+  }
+
+  .active-indicator {
+    height: 20px;
+  }
+}

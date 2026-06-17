@@ -1,0 +1,87 @@
+.filter-stats {
+  width: 100%;
+  display: grid;
+  gap: 0.8rem;
+  margin-top: 0.3rem;
+  margin-bottom: 1.1rem;
+  grid-template-columns: repeat(var(--filter-stats-cols-desktop, 1), minmax(0, 1fr));
+}
+
+.filter-stats__item {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #ffffff6d;
+  background: #0b121a;
+  padding: 0.3rem 0.4rem;
+  min-height: 90px;
+  text-align: center;
+  font: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.filter-stats__item:hover {
+  border-color: var(--text-white);
+  background-color: #0e15207e;
+}
+
+.filter-stats__item--active {
+  border-color: var(--text-white);
+  background-color: #0e15207e;
+  border-width: 3px;
+  box-shadow:
+    0 0 0 1px rgba(249, 250, 251, 0.25),
+    0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.filter-stats__item span {
+  display: block;
+  color: var(--text-white);
+  font-weight: 700;
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.filter-stats__item p {
+  margin-top: 0.3rem;
+  color: #94a3b8;
+  font-size: 0.9rem;
+  line-height: 1.15;
+}
+
+.filter-stats__item--themed {
+  background: var(--filter-stat-bg);
+  border-color: var(--filter-stat-border);
+}
+
+.filter-stats__item--themed span {
+  color: var(--filter-stat-text);
+}
+
+.filter-stats__item--themed:hover {
+  background: var(--filter-stat-bg);
+  border-color: var(--filter-stat-hover-border, var(--filter-stat-border));
+}
+
+.filter-stats__item--themed.filter-stats__item--active {
+  background: var(--filter-stat-bg);
+  border-color: var(--filter-stat-active-border, var(--filter-stat-border));
+  box-shadow:
+    0 0 0 1px var(--filter-stat-active-ring, rgba(249, 250, 251, 0.25)),
+    0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .workorders-page:not(.workorders-page--management) .filter-stats {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .filter-stats {
+    grid-template-columns: repeat(var(--filter-stats-cols-tablet, 1), minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .filter-stats {
+    grid-template-columns: repeat(var(--filter-stats-cols-mobile, 1), minmax(0, 1fr));
+  }
+}

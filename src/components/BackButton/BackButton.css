@@ -1,0 +1,33 @@
+.detail-back-button {
+  border: 1px solid #374151;
+  background: #111827;
+  color: #e5e7eb;
+  padding: 0.42rem 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.detail-back-button:hover {
+  color: var(--brand-accent);
+  border-color: var(--brand-accent);
+  background: rgba(249, 115, 22, 0.08);
+}
+
+.detail-back-button:focus-visible {
+  outline: 2px solid rgba(249, 115, 22, 0.35);
+  outline-offset: 2px;
+}
+
+.detail-back-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

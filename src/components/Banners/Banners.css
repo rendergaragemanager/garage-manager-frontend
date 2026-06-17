@@ -1,0 +1,196 @@
+.offline-banner {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9000;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background: #0d1217;
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  border-radius: 12px;
+  padding: 12px 18px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #fca5a5;
+  white-space: normal;
+  width: max-content;
+  max-width: calc(100vw - 2rem);
+
+  animation: banner-slide-up 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.offline-banner--hiding {
+  animation: banner-slide-down 0.25s ease-in forwards;
+}
+
+.offline-banner__icon {
+  display: flex;
+  align-items: center;
+  color: #f87171;
+  flex-shrink: 0;
+}
+
+@keyframes banner-slide-up {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes banner-slide-down {
+  from {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-50%) translateY(12px);
+  }
+}
+
+/* Banner de actualización disponible */
+.update-banner {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9000;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  background: #0d1217;
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  border-radius: 12px;
+  padding: 12px 18px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-white, #f9fafb);
+  white-space: normal;
+  width: max-content;
+  max-width: calc(100vw - 2rem);
+
+  animation: banner-slide-up 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.update-banner__icon {
+  display: flex;
+  align-items: center;
+  color: var(--brand-accent, #f97316);
+  flex-shrink: 0;
+}
+
+.update-banner__btn {
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: var(--brand-accent, #f97316);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  transition: filter 0.15s ease;
+  flex-shrink: 0;
+}
+
+.update-banner__btn:hover {
+  filter: brightness(1.1);
+}
+
+.update-banner__btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Banner de instalación PWA */
+.install-banner {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9000;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  background: #0d1217;
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  border-radius: 12px;
+  padding: 12px 18px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-white, #f9fafb);
+  white-space: normal;
+  width: max-content;
+  max-width: calc(100vw - 2rem);
+
+  animation: banner-slide-up 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.install-banner__icon {
+  display: flex;
+  align-items: center;
+  color: #818cf8;
+  flex-shrink: 0;
+}
+
+.install-banner__text {
+  flex: 1;
+}
+
+.install-banner__btn {
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: #6366f1;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  transition: filter 0.15s ease;
+  flex-shrink: 0;
+}
+
+.install-banner__btn:hover {
+  filter: brightness(1.15);
+}
+
+.banner-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted, #9ca3af);
+  padding: 4px;
+  margin-left: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.banner-close-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}

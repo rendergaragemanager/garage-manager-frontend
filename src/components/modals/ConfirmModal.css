@@ -1,0 +1,25 @@
+.gm-modal-footer--confirm {
+  justify-content: stretch;
+  gap: 12px;
+}
+
+.gm-modal-footer--confirm .gm-modal-btn {
+  flex: 1;
+  justify-content: center;
+}
+
+.gm-modal-btn-warning {
+  background: rgba(250, 204, 21, 0.1);
+  border: 1px solid rgba(250, 204, 21, 0.25);
+  color: #facc15;
+}
+
+.gm-modal-btn-warning:hover:not(:disabled) {
+  background: rgba(250, 204, 21, 0.2);
+  border-color: #facc15;
+}
+
+.gm-modal-btn-warning:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

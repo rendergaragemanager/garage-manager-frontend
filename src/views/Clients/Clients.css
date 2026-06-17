@@ -1,0 +1,129 @@
+.clients-page {
+  padding: 0.5rem 0 0;
+}
+
+.clients-loading,
+.clients-empty {
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  background: #0b121a;
+  color: #9ca3af;
+  padding: 1rem;
+  text-align: center;
+}
+
+.client-main-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+}
+
+.client-name-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.name-text {
+  font-weight: 600;
+  color: var(--text-white);
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.client-number-badge {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  opacity: 0.8;
+}
+
+.client-document-cell {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--brand-accent);
+  letter-spacing: 0.5px;
+}
+
+.clients-dl-badge--active {
+  color: #34d399;
+  border-color: rgba(52, 211, 153, 0.45);
+  background: rgba(52, 211, 153, 0.12);
+}
+
+.clients-dl-badge--inactive {
+  color: #f87171;
+  border-color: rgba(248, 113, 113, 0.45);
+  background: rgba(248, 113, 113, 0.12);
+}
+
+.workorders-vehicle-client {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.workorders-vehicle-row,
+.workorders-client-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.workorders-entity-icon {
+  flex-shrink: 0;
+  color: var(--brand-accent);
+}
+
+.workorders-entity-text {
+  color: #f3f4f6;
+  font-weight: 500;
+  font-size: 0.95rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+@media (max-width: 1024px) {
+  .clients-datalist .dl-row .dl-cell[style*='grid-area: status'] {
+    text-align: right;
+    align-items: flex-end;
+  }
+  .clients-datalist .dl-row .dl-cell[style*='grid-area: actions'] {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    justify-content: flex-end !important;
+    height: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .clients-datalist .dl-row .dl-cell[style*='grid-area: status'] {
+    text-align: left;
+    align-items: flex-start;
+  }
+  .client-main-info {
+    min-width: 0;
+  }
+  .client-name-wrapper {
+    min-width: 0;
+    max-width: 100%;
+    align-items: flex-end;
+  }
+  .name-text {
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

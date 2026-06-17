@@ -1,0 +1,159 @@
+.client-modal-phone-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 12px;
+}
+
+.client-modal-input--country {
+  text-align: center;
+  font-weight: 700;
+  color: var(--brand-accent) !important;
+}
+
+.client-modal-vehicles-section {
+  margin-top: 10px;
+}
+
+.client-modal-section-header-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.client-modal-add-vehicle-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(249, 115, 22, 0.1);
+  border: 1px solid rgba(249, 115, 22, 0.2);
+  color: var(--brand-accent);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.client-modal-add-vehicle-btn:hover {
+  background: var(--brand-accent);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.client-modal-vehicles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.client-modal-vehicle-item-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.client-modal-clickable:hover {
+  border-color: var(--brand-accent);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+.client-modal-vehicle-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.client-modal-vehicle-plate {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--brand-accent);
+}
+
+.client-modal-vehicle-info {
+  font-size: 13px;
+  color: #fff;
+  opacity: 0.8;
+}
+
+.client-modal-vehicle-thumb-container {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.client-modal-vehicle-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.client-modal-no-vehicles-msg {
+  padding: 24px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.client-modal-mini-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-top-color: var(--brand-accent);
+  border-radius: 50%;
+  animation: cm-spin 0.8s linear infinite;
+}
+
+@keyframes cm-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.client-modal-vehicles-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px;
+  color: #64748b;
+}
+
+@media (max-width: 640px) {
+  .gm-modal-section-divider {
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+  }
+
+  .client-modal-vehicles-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .client-modal-add-vehicle-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .gm-modal-form-row {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+
+  .client-modal-phone-row {
+    grid-template-columns: 80px 1fr !important;
+    gap: 8px;
+  }
+}
