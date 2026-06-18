@@ -1,41 +1,41 @@
-import { RefreshCcw, X } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect } from 'react';
 import { useRegisterSW } from 'virtual:pwa-register/react';
 
-import './Banners.css';
+// Comprueba si hay versión nueva cada 30 min (útil con la PWA instalada y abierta mucho tiempo)
+const UPDATE_CHECK_INTERVAL_MS = 30 * 60 * 1000;
 
+/**
+ * Mantiene registrado el Service Worker y, con `registerType: 'autoUpdate'`,
+ * adopta las versiones nuevas automáticamente. Recarga la página una sola vez
+ * cuando el SW nuevo toma el control, para evitar que una pestaña abierta
+ * intente cargar chunks que `cleanupOutdatedCaches` ya borró (causa de 404).
+ * No renderiza UI.
+ */
 export const UpdateBanner = () => {
-  const {
-    needRefresh: [needRefresh],
-    updateServiceWorker,
-  } = useRegisterSW();
+  useRegisterSW({
+    onRegisteredSW(_swUrl, registration) {
+      if (!registration) return;
+      setInterval(() => {
+        void registration.update();
+      }, UPDATE_CHECK_INTERVAL_MS);
+    },
+  });
 
-  const [updating, setUpdating] = useState(false);
-  const [dismissed, setDismissed] = useState(false);
+  useEffect(() => {
+    if (!('serviceWorker' in navigator)) return;
 
-  const handleUpdate = () => {
-    setUpdating(true);
-    void updateServiceWorker(true);
-  };
+    let reloaded = false;
+    const onControllerChange = () => {
+      if (reloaded) return;
+      reloaded = true;
+      window.location.reload();
+    };
 
-  if (!needRefresh || dismissed) return null;
+    navigator.serviceWorker.addEventListener('controllerchange', onControllerChange);
+    return () => {
+      navigator.serviceWorker.removeEventListener('controllerchange', onControllerChange);
+    };
+  }, []);
 
-  return (
-    <div className="update-banner" role="status" aria-live="polite">
-      <span className="update-banner__icon">
-        <RefreshCcw size={16} />
-      </span>
-      Nueva versión disponible
-      <button className="update-banner__btn" onClick={handleUpdate} disabled={updating}>
-        {updating ? 'Actualizando...' : 'Actualizar'}
-      </button>
-      <button
-        className="banner-close-btn"
-        onClick={() => setDismissed(true)}
-        aria-label="Cerrar banner"
-      >
-        <X size={16} />
-      </button>
-    </div>
-  );
+  return null;
 };
