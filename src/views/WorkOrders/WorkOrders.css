@@ -862,42 +862,50 @@
     display: block;
     height: 100px;
     width: auto;
-    max-width: 240px;
+    max-width: 180px;
     object-fit: contain;
     object-position: left center;
   }
 
   .print-company-info {
     flex: 1;
+    min-width: 0;
     margin-left: 0;
   }
 
   .print-company-name {
-    margin: 0;
-    font-size: 22px;
+    margin: 0 0 2px;
+    font-size: 17px;
+    line-height: 1.2;
     color: #000;
     font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .print-company-info p {
-    margin: 4px 0;
-    font-size: 14px;
+    margin: 3px 0;
+    font-size: 13px;
     color: #333;
   }
 
   .print-workorder-meta {
     text-align: right;
+    flex-shrink: 0;
   }
 
   .print-workorder-meta h2 {
-    margin: 0 0 10px 0;
-    font-size: 24px;
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    letter-spacing: 1px;
     color: #000;
   }
 
   .meta-row {
-    font-size: 14px;
-    margin: 4px 0;
+    font-size: 12px;
+    margin: 3px 0;
+    white-space: nowrap;
   }
 
   .print-details-grid {
@@ -908,7 +916,7 @@
   }
 
   .print-details-section h3 {
-    font-size: 16px;
+    font-size: 15px;
     border-bottom: 1px solid #ddd;
     padding-bottom: 5px;
     margin-bottom: 10px;
@@ -917,7 +925,7 @@
 
   .print-details-section p {
     margin: 5px 0;
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .print-description {
@@ -925,14 +933,14 @@
   }
 
   .print-description h3 {
-    font-size: 16px;
+    font-size: 15px;
     border-bottom: 1px solid #ddd;
     padding-bottom: 5px;
     margin-bottom: 10px;
   }
 
   .print-description p {
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.5;
   }
 
