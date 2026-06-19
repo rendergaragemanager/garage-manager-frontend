@@ -308,6 +308,14 @@
   cursor: not-allowed;
 }
 
+/* Lista desplegable nativa de los <select>: el navegador la pinta con fondo
+   blanco, así que las <option> deben usar texto oscuro para ser legibles
+   (si no, heredan el color:#fff del input -> texto blanco sobre blanco). */
+.gm-modal-input option {
+  color: var(--bg-dark);
+  background-color: #fff;
+}
+
 .gm-modal-footer {
   padding: 20px 28px;
   background: transparent;
