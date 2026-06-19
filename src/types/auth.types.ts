@@ -32,6 +32,10 @@ export type UserCompanyResponse = {
     country: string;
   };
   phone?: string;
+  logo?: {
+    url: string;
+    publicId: string;
+  };
 };
 
 export type UserProfileResponse = {

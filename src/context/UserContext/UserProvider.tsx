@@ -40,6 +40,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
         companyDocument: company?.document,
         companyAddress: company?.address,
         companyPhone: company?.phone,
+        companyLogo: company?.logo,
         name: profile.name,
         createdAt: profile.createdAt,
       });

@@ -5,12 +5,18 @@ export interface CompanyAddress {
   country?: string;
 }
 
+export interface CompanyLogo {
+  url: string;
+  publicId: string;
+}
+
 export interface Company {
   _id: string;
   name: string;
   document?: string;
   phone?: string;
   address?: CompanyAddress;
+  logo?: CompanyLogo;
   active: boolean;
   createdAt?: string;
   updatedAt?: string;

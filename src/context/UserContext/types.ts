@@ -7,6 +7,11 @@ export interface Address {
   country: string;
 }
 
+export interface CompanyLogo {
+  url: string;
+  publicId: string;
+}
+
 export interface UserSession {
   role: UserRole;
   userId: string;
@@ -17,6 +22,7 @@ export interface UserSession {
   companyDocument?: string;
   companyAddress?: Address;
   companyPhone?: string;
+  companyLogo?: CompanyLogo;
   name?: string;
   createdAt?: string;
   csrfToken?: string;

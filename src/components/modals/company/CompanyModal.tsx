@@ -1,8 +1,13 @@
-import { X, Building2, Save } from 'lucide-react';
+import { X, Building2, Save, ImagePlus } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 
-import { updateCompany } from '../../../services/api/companies.api';
+import {
+  updateCompany,
+  updateCompanyLogo,
+} from '../../../services/api/companies.api';
 import './CompanyModal.css';
+
+const MAX_LOGO_SIZE = 5 * 1024 * 1024; // 5MB
 
 interface CompanyModalProps {
   isOpen: boolean;
@@ -13,6 +18,7 @@ interface CompanyModalProps {
     name: string;
     document: string;
     phone: string;
+    logoUrl?: string;
     address?: {
       street: string;
       city: string;
@@ -41,6 +47,8 @@ const CompanyModal: React.FC<CompanyModalProps> = ({
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [initialFormData, setInitialFormData] = useState<typeof formData | null>(null);
+  const [logoFile, setLogoFile] = useState<File | null>(null);
+  const [logoPreview, setLogoPreview] = useState<string | null>(null);
 
   useEffect(() => {
     if (isOpen && companyData) {
@@ -63,8 +71,19 @@ const CompanyModal: React.FC<CompanyModalProps> = ({
       };
       setFormData(initialData);
       setInitialFormData(initialData);
+      setLogoFile(null);
+      setLogoPreview(companyData.logoUrl || null);
     }
   }, [isOpen, companyData]);
+
+  // Liberar el object URL de la preview cuando cambie o se cierre el modal
+  useEffect(() => {
+    return () => {
+      if (logoPreview && logoPreview.startsWith('blob:')) {
+        URL.revokeObjectURL(logoPreview);
+      }
+    };
+  }, [logoPreview]);
 
   // Bloqueo de scroll del body
   useEffect(() => {
@@ -97,6 +116,24 @@ const CompanyModal: React.FC<CompanyModalProps> = ({
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleLogoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.size > MAX_LOGO_SIZE) {
+      setError('⚠️ El logo es demasiado pesado (máximo 5MB).');
+      e.target.value = '';
+      return;
+    }
+
+    setError(null);
+    setLogoFile(file);
+    setLogoPreview((prev) => {
+      if (prev && prev.startsWith('blob:')) URL.revokeObjectURL(prev);
+      return URL.createObjectURL(file);
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
@@ -116,6 +153,13 @@ const CompanyModal: React.FC<CompanyModalProps> = ({
         },
       });
 
+      // Si se seleccionó un nuevo logo, lo subimos (sustituye al anterior)
+      if (logoFile) {
+        const logoData = new FormData();
+        logoData.append('logo', logoFile);
+        await updateCompanyLogo(companyData.id, logoData);
+      }
+
       onSaved();
       onClose();
     } catch (err: unknown) {
@@ -127,9 +171,11 @@ const CompanyModal: React.FC<CompanyModalProps> = ({
     }
   };
 
-  const hasChanges = initialFormData
-    ? JSON.stringify(formData) !== JSON.stringify(initialFormData)
-    : false;
+  const hasChanges =
+    Boolean(logoFile) ||
+    (initialFormData
+      ? JSON.stringify(formData) !== JSON.stringify(initialFormData)
+      : false);
 
   if (!isOpen) return null;
 
@@ -163,6 +209,32 @@ const CompanyModal: React.FC<CompanyModalProps> = ({
             {error && <div className="company-modal-error">{error}</div>}
 
             <div className="gm-modal-form-section">
+              <div className="gm-modal-form-group">
+                <label className="gm-modal-label">Logo de la Empresa</label>
+                <div className="company-modal-logo">
+                  <div className="company-modal-logo-preview">
+                    {logoPreview ? (
+                      <img src={logoPreview} alt="Logo de la empresa" />
+                    ) : (
+                      <Building2 size={28} />
+                    )}
+                  </div>
+                  <label className="company-modal-logo-upload">
+                    <ImagePlus size={18} />
+                    <span>{logoPreview ? 'Cambiar logo' : 'Subir logo'}</span>
+                    <input
+                      type="file"
+                      accept="image/png,image/jpeg,image/jpg,image/webp"
+                      onChange={handleLogoChange}
+                      hidden
+                    />
+                  </label>
+                </div>
+                <p className="company-modal-logo-hint">
+                  Aparecerá en presupuestos y albaranes. PNG, JPG o WEBP (máx. 5MB).
+                </p>
+              </div>
+
               <div className="gm-modal-form-group">
                 <label className="gm-modal-label">Nombre Comercial</label>
                 <input
