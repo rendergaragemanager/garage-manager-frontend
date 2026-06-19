@@ -823,7 +823,11 @@ const WorkOrders = () => {
           <div id="printable-workorder" className="printable-workorder-container">
             <div className="print-header">
               <div className="print-logo-container">
-                <img src="/logos/Logo.png" alt="Logo" className="print-logo" />
+                <img
+                  src={user?.companyLogo?.url || '/logos/Logo.png'}
+                  alt="Logo"
+                  className="print-logo"
+                />
               </div>
               <div className="print-company-info">
                 <h1 className="print-company-name">

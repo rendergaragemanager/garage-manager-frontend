@@ -1,8 +1,8 @@
-import type { Company, CompanyAddress } from '../../types/company.types';
+import type { Company, CompanyAddress, CompanyLogo } from '../../types/company.types';
 
 import { apiFetch } from './apiClient';
 
-export type { Company, CompanyAddress };
+export type { Company, CompanyAddress, CompanyLogo };
 
 export interface GetCompaniesResponse {
   companies: Company[];
@@ -29,7 +29,6 @@ export interface UpdateCompanyRequest {
   document?: string;
   phone?: string;
   address?: CompanyAddress;
-  logo?: string;
 }
 
 export const getCompanies = (params?: {
@@ -68,6 +67,12 @@ export const updateCompany = (id: string, data: UpdateCompanyRequest) =>
   apiFetch<{ message: string; company: Company }>(`/companies/${id}`, {
     method: 'PUT',
     body: JSON.stringify(data),
+  });
+
+export const updateCompanyLogo = (id: string, logoData: FormData) =>
+  apiFetch<{ message: string; logo: CompanyLogo }>(`/companies/${id}/logo`, {
+    method: 'PATCH',
+    body: logoData,
   });
 
 export const deactivateCompany = (id: string) =>

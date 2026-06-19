@@ -184,6 +184,7 @@ const Profile = () => {
               name: user.companyName || '',
               document: user.companyDocument || '',
               phone: user.companyPhone || '',
+              logoUrl: user.companyLogo?.url,
               address: user.companyAddress
                 ? {
                     street: user.companyAddress.street || '',
