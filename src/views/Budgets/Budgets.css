@@ -182,25 +182,31 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 24px;
     border-bottom: 2px solid #333;
-    padding-bottom: 20px;
-    margin-bottom: 30px;
+    padding-bottom: 16px;
+    margin-bottom: 22px;
   }
 
   .print-logo-container {
-    width: 60px;
-    height: 60px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
   }
 
   .print-logo {
-    width: 100%;
-    height: 100%;
+    display: block;
+    height: 100px;
+    width: auto;
+    max-width: 240px;
     object-fit: contain;
+    object-position: left center;
   }
 
   .print-company-info {
     flex: 1;
-    margin-left: 20px;
+    margin-left: 0;
   }
 
   .print-company-name {
@@ -234,8 +240,8 @@
   .print-details-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    margin-bottom: 30px;
+    gap: 28px;
+    margin-bottom: 20px;
   }
 
   .print-details-section h3 {
@@ -252,7 +258,7 @@
   }
 
   .print-description {
-    margin-bottom: 30px;
+    margin-bottom: 18px;
   }
 
   .print-description h3 {
@@ -270,19 +276,19 @@
   .print-items-table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 30px;
+    margin-bottom: 18px;
   }
 
   .print-items-table th {
     background-color: #f5f5f5;
-    padding: 10px;
+    padding: 8px 10px;
     border: 1px solid #ddd;
     font-size: 13px;
     text-align: left;
   }
 
   .print-items-table td {
-    padding: 10px;
+    padding: 8px 10px;
     border: 1px solid #ddd;
     font-size: 13px;
   }
@@ -296,14 +302,14 @@
   }
 
   .print-footer-info {
-    margin-top: 40px;
+    margin-top: 24px;
   }
 
   .print-totals {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    margin-bottom: 40px;
+    margin-bottom: 24px;
     border-top: 1px solid #ddd;
     padding-top: 15px;
   }
