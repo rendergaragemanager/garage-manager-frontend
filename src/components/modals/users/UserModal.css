@@ -4,6 +4,17 @@
   gap: 20px 24px;
 }
 
+.user-modal-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
 @media (max-width: 480px) {
   .gm-modal-body {
     padding: 16px;

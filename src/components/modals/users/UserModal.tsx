@@ -69,9 +69,11 @@ const UserModal: React.FC<UserModalProps> = ({
 }) => {
   const [formData, setFormData] = useState<UserFormData>(buildDefaultFormData());
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!isOpen) return;
+    setError(null);
     if (editingUser) {
       setFormData(userToFormData(editingUser));
     } else {
@@ -114,14 +116,24 @@ const UserModal: React.FC<UserModalProps> = ({
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     const { name, value } = e.target;
+    if (name === 'password') setError(null);
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(null);
+
+    const normalizedPassword = formData.password?.trim() ?? '';
+
+    // La contraseña es obligatoria al crear; al editar solo se valida si se escribe.
+    if ((!editingUser || normalizedPassword !== '') && normalizedPassword.length < 8) {
+      setError('La contraseña debe tener al menos 8 caracteres');
+      return;
+    }
+
     try {
       setSubmitting(true);
-      const normalizedPassword = formData.password?.trim();
 
       if (editingUser) {
         const updateData: UpdateUserPayload = {
@@ -145,7 +157,7 @@ const UserModal: React.FC<UserModalProps> = ({
       onClose();
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : 'Error al guardar el usuario';
-      alert(message);
+      setError(message);
     } finally {
       setSubmitting(false);
     }
@@ -187,6 +199,7 @@ const UserModal: React.FC<UserModalProps> = ({
 
         <div className="gm-modal-body">
           <form id="user-form" onSubmit={handleSubmit}>
+            {error && <div className="user-modal-error">{error}</div>}
             <div className="gm-modal-form-section">
               <div className="gm-modal-section-divider">
                 <span>Datos de Acceso</span>

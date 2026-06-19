@@ -71,6 +71,8 @@ const CreateCompanyModal: React.FC<CreateCompanyModalProps> = ({
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
+    if (name === 'password') setError(null);
+
     if (name === 'phonePrefix') {
       let formattedValue = value;
       if (!formattedValue.startsWith('+')) {
@@ -87,6 +89,12 @@ const CreateCompanyModal: React.FC<CreateCompanyModalProps> = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
+
+    if (formData.password.trim().length < 8) {
+      setError('La contraseña debe tener al menos 8 caracteres');
+      return;
+    }
+
     try {
       setSubmitting(true);
       const fullPhone = `${formData.phonePrefix} ${formData.phoneNumber.trim()}`;
