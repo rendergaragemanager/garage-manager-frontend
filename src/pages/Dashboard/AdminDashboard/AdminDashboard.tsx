@@ -334,7 +334,7 @@ const AdminDashboard: React.FC = () => {
           color="purple"
         />
         <StatsCard
-          label="Total facturado (año)"
+          label="Total albaranes (año)"
           value={Math.round(yearlyRevenue)}
           icon={Euro}
           color="orange"

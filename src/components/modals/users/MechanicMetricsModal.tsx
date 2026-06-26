@@ -126,7 +126,7 @@ const MechanicMetricsModal: React.FC<MechanicMetricsModalProps> = ({
                     <DollarSign size={18} />
                   </div>
                   <div className="stat-data">
-                    <span className="stat-label">Facturación</span>
+                    <span className="stat-label">Total albaranes</span>
                     <span className="stat-value">
                       {(metrics?.deliveredTotal || 0).toLocaleString('es-ES', {
                         style: 'currency',

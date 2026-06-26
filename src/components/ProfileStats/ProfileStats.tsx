@@ -156,7 +156,7 @@ const ProfileStats = ({ role, orders, loading = false }: ProfileStatsProps) => {
           },
           {
             key: 'a-revenue-month',
-            label: 'Facturado mensual',
+            label: 'Total albaranes (mes)',
             value: `${monthlyRevenue.toFixed(2)} €`,
             variant: 'active',
           },

@@ -794,7 +794,7 @@ const Users: React.FC = () => {
           },
           {
             key: 'billing',
-            header: 'FACTURACION',
+            header: 'IMPORTE',
             gridArea: 'billing',
             cell: (u: User) =>
               (userTotals[u._id]?.billingTotal ?? 0).toLocaleString('es-ES', {
@@ -1648,7 +1648,7 @@ const Users: React.FC = () => {
           },
           {
             key: 'billing',
-            header: 'FACTURACIÓN',
+            header: 'IMPORTE',
             gridArea: 'billing',
             cell: (u: User) =>
               (userTotals[u._id]?.billingTotal ?? 0).toLocaleString('es-ES', {
