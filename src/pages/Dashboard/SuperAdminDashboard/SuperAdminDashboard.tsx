@@ -1,5 +1,4 @@
 import {
-  Building2,
   Users,
   CheckCircle,
   TrendingUp,
@@ -201,28 +200,28 @@ const SuperAdminDashboard: React.FC = () => {
 
       <div className="super-admin-dashboard-stats">
         <StatsCard
-          label="Total Empresas"
-          value={metrics.totalCompanies}
-          icon={Building2}
-          color="orange"
-        />
-        <StatsCard
           label="Empresas Activas"
           value={metrics.activeCompanies}
           icon={CheckCircle}
           color="green"
         />
         <StatsCard
-          label="Total Usuarios"
-          value={metrics.totalUsers}
-          icon={Users}
-          color="blue"
-        />
-        <StatsCard
           label="Empresas Inactivas"
           value={metrics.inactiveCompanies}
           icon={TrendingUp}
           color="purple"
+        />
+        <StatsCard
+          label="Usuarios Activos"
+          value={metrics.activeUsers}
+          icon={Activity}
+          color="blue"
+        />
+        <StatsCard
+          label="Usuarios Inactivos"
+          value={metrics.inactiveUsers}
+          icon={Users}
+          color="orange"
         />
       </div>
 
