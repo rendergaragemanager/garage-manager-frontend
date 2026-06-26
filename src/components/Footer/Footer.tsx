@@ -50,14 +50,14 @@ const Footer = () => {
             <h4>Contacto</h4>
             <ul>
               <li>
-                <a href="mailto:soporte@garagemanager.com">
-                  <Mail size={14} /> Correo electrónico
+                <a href="mailto:rendergaragemanager@gmail.com">
+                  <Mail size={14} /> rendergaragemanager@gmail.com
                 </a>
               </li>
               <li>
-                <a href="tel:+34900000000">
-                  <Phone size={14} /> 900 000 000
-                </a>
+                <span>
+                  <Phone size={14} /> Teléfono no disponible por el momento
+                </span>
               </li>
             </ul>
           </div>
