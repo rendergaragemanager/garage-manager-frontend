@@ -45,19 +45,19 @@ const PrivacyPolicy = () => {
           </h2>
           <div className="company-data-card">
             <p>
-              <strong>Titular:</strong> [NOMBRE DE LA EMPRESA]
+              <strong>Titular:</strong> Garage Manager
             </p>
             <p>
-              <strong>NIF/CIF:</strong> [NIF/CIF]
+              <strong>NIF/CIF:</strong> No disponible por el momento
             </p>
             <p>
-              <strong>Domicilio:</strong> [DIRECCIÓN FISCAL]
+              <strong>Domicilio:</strong> No disponible por el momento
             </p>
             <p>
-              <strong>Correo electrónico:</strong> [EMAIL DE CONTACTO]
+              <strong>Correo electrónico:</strong> rendergaragemanager@gmail.com
             </p>
             <p>
-              <strong>Teléfono:</strong> [TELÉFONO]
+              <strong>Teléfono:</strong> No disponible por el momento
             </p>
           </div>
         </section>
@@ -184,7 +184,8 @@ const PrivacyPolicy = () => {
           <p>
             Puede ejercer sus derechos de acceso, rectificación, supresión, oposición,
             limitación del tratamiento y portabilidad enviando una solicitud a{' '}
-            <strong>[EMAIL DE CONTACTO]</strong>, adjuntando copia de su DNI cuando sea
+            <strong>rendergaragemanager@gmail.com</strong>, adjuntando copia de su DNI
+            cuando sea
             necesario.
           </p>
           <p>
