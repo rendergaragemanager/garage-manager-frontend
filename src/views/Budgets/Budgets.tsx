@@ -360,6 +360,13 @@ const Budgets: React.FC = () => {
 
   // ── Display helpers ───────────────────────────────────────────────────────
 
+  const formatDate = (isoDate: string) =>
+    new Date(isoDate).toLocaleDateString('es-ES', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+    });
+
   const getClientName = useCallback(
     (clientRef: string | Client) => {
       if (!clientRef) return 'N/A';
@@ -501,6 +508,12 @@ const Budgets: React.FC = () => {
           {b.budgetNumber ? `#${b.budgetNumber}` : '---'}
         </span>
       ),
+    },
+    {
+      key: 'date',
+      header: 'FECHA',
+      gridArea: 'date',
+      cell: (b) => <span className="workorders-date-cell">{formatDate(b.createdAt)}</span>,
     },
     {
       key: 'service',
@@ -840,7 +853,7 @@ const Budgets: React.FC = () => {
                 <p style={{ fontSize: '0.8rem', marginTop: '5px', color: '#666' }}>
                   <strong>PROTECCIÓN DE DATOS:</strong> De acuerdo con el RGPD, los datos
                   aquí recogidos serán tratados por {user?.companyName || 'el taller'}{' '}
-                  para la gestión comercial y facturación. Puede ejercer sus derechos de
+                  para la gestión comercial. Puede ejercer sus derechos de
                   acceso o supresión contactando con nosotros.
                 </p>
               </div>
@@ -912,20 +925,20 @@ const Budgets: React.FC = () => {
             alignActionsTop
             gridTemplateAreas={{
               base: `
-                "number total"
-                "service service"
+                "number date"
+                "service total"
                 "description description"
                 "clientVehicle clientVehicle"
                 "status actions"
               `,
               tablet: `
-                "number clientVehicle service total"
-                "description description description description"
-                "status status status actions"
+                "number clientVehicle service date total"
+                "description description description description description"
+                "status status status status actions"
               `,
-              desktop: `"number service description clientVehicle total status actions"`,
+              desktop: `"number date service description clientVehicle total status actions"`,
             }}
-            gridTemplateColumns="100px 150px minmax(240px, 1fr) minmax(180px, 1fr) 120px 120px 140px"
+            gridTemplateColumns="100px 110px 150px minmax(240px, 1fr) minmax(180px, 1fr) 120px 120px 140px"
             emptyMessage={emptyStateByFilter[activeFilter]}
             onRowClick={(b) => handleOpenModal(b)}
           />

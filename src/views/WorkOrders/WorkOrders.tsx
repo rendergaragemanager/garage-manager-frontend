@@ -489,6 +489,19 @@ const WorkOrders = () => {
         </div>
       ),
     },
+    {
+      key: 'total',
+      header: 'TOTAL',
+      gridArea: 'total',
+      cell: (order) => (
+        <span className="total-amount">
+          {(Number(order.total) || 0).toLocaleString('es-ES', {
+            style: 'currency',
+            currency: 'EUR',
+          })}
+        </span>
+      ),
+    },
   ];
 
   const managementActions: RowAction<WorkOrder>[] = [
@@ -739,19 +752,19 @@ const WorkOrders = () => {
             gridTemplateAreas={{
               base: `
                 "number date"
-                "serviceType serviceType"
+                "serviceType total"
                 "description description"
                 "vehicleClient vehicleClient"
                 "status actions"
               `,
               tablet: `
-                "number vehicleClient serviceType date"
-                "description description description description"
-                "status status status actions"
+                "number vehicleClient serviceType date total"
+                "description description description description description"
+                "status status status status actions"
               `,
-              desktop: `"number date serviceType description vehicleClient status actions"`,
+              desktop: `"number date serviceType description vehicleClient total status actions"`,
             }}
-            gridTemplateColumns="100px 110px 150px minmax(220px, 1fr) minmax(180px, 0.8fr) 140px 100px"
+            gridTemplateColumns="100px 110px 150px minmax(220px, 1fr) minmax(180px, 0.8fr) 120px 140px 100px"
             emptyMessage={emptyStateByFilter[activeFilter]}
             onRowClick={(order) => handleOpenDetailModal(order._id)}
           />
